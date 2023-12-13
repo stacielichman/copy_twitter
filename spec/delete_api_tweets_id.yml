@@ -1,0 +1,27 @@
+Deletes a tweet by its id
+---
+tags:
+  - tweet
+parameters:
+  - in: header
+    name: Api-Key
+    schema:
+      type: string
+      example: test
+  - in: path
+    name: id
+    description: a tweet id
+    required: true
+    schema:
+      type: integer
+      example: 20
+
+responses:
+  200:
+    description: Successful operation
+    schema:
+      type: object
+      properties:
+        result:
+          type: string
+          example: "true"

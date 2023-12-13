@@ -1,0 +1,91 @@
+Returns a list of tweets
+---
+tags:
+  - tweet
+parameters:
+  - in: query
+    name: id
+    description: 'tweet id'
+    schema:
+      type: integer
+  - in: query
+    name: content
+    description: 'tweet content'
+    schema:
+      type: string
+  - in: query
+    name: attachments
+    description: 'tweet attachments'
+    schema:
+      type: array
+
+definitions:
+  Tweet:
+    type: object
+    properties:
+      id:
+        type: integer
+      content:
+        type: string
+      media_ids:
+        type: array
+        items:
+          $ref: '#/definitions/Media'
+      likes:
+        type: array
+        items:
+          $ref: '#/definitions/Like'
+      author:
+        type: object
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+        items:
+          $ref: '#/definitions/User'
+  User:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+        items:
+          $ref: '#/definitions/Tweet'
+
+  Media:
+    type: string
+    properties:
+      filename:
+        type: string
+        items:
+          $ref: '#/definitions/Tweet'
+
+  Like:
+    type: object
+    properties:
+      user_id:
+        type: integer
+      name:
+        type: string
+        items:
+          $ref: '#/definitions/Tweet'
+responses:
+  200:
+    description: A list of tweets
+    schema:
+      $ref: '#/definitions/Tweet'
+  400:
+    description: Exception appeared
+    schema:
+      type: object
+      properties:
+        result:
+          type: string
+          example: "false"
+        error_type:
+          type: string
+        error_message:
+          type: string
+

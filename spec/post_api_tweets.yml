@@ -1,0 +1,43 @@
+Posts a tweet
+---
+tags:
+  - tweet
+produces:
+  - application/json
+consumes:
+  - application/json
+parameters:
+  - in: header
+    name: Api-Key
+    schema:
+      type: string
+      example: test
+  - in: body
+    name: body
+    required: true
+    schema:
+      $ref: '#/definitions/PostTweet'
+
+definitions:
+  PostTweet:
+    type: object
+    properties:
+      tweet_data:
+        type: string
+        example: hello
+      tweet_media_ids:
+        type: integer
+        example: [1]
+
+responses:
+  201:
+    description: a tweet id
+    schema:
+      type: object
+      properties:
+        result:
+          type: string
+          example: "true"
+        tweet_id:
+          type: string
+          example: 1

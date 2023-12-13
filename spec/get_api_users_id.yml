@@ -1,0 +1,61 @@
+Returns a user's profile by their id
+---
+tags:
+  - user
+parameters:
+  - in: header
+    name: Api-Key
+    schema:
+      type: string
+      example: test
+  - in: path
+    name: id
+    description: a user id
+    required: true
+    schema:
+      type: integer
+      example: 1
+
+definitions:
+  User:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      followers:
+        type: array
+        items:
+          $ref: '#/definitions/Follower'
+      following:
+        type: array
+        items:
+          $ref: '#/definitions/Following'
+
+  Follower:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+        items:
+          $ref: '#/definitions/User'
+
+  Following:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+        items:
+          $ref: '#/definitions/User'
+
+responses:
+  200:
+    description: the user's profile
+    schema:
+      $ref: '#/definitions/User'
+

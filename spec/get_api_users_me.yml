@@ -1,0 +1,65 @@
+Returns a user's profile
+---
+openapi: 3.0.0
+info:
+  title: API Twitter
+  description: The micro-blogging service Twitter
+  version: 0.1.9
+
+servers:
+  - url: http://127.0.0.1:5000
+    description: Micro-blogging service
+
+
+tags:
+  - user
+parameters:
+  - in: header
+    name: Api-Key
+    schema:
+      type: string
+      example: test
+
+definitions:
+  User:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      followers:
+        type: array
+        items:
+          $ref: '#/definitions/Follower'
+      following:
+        type: array
+        items:
+          $ref: '#/definitions/Following'
+
+  Follower:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+        items:
+          $ref: '#/definitions/User'
+
+  Following:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+        items:
+          $ref: '#/definitions/User'
+
+responses:
+  200:
+    description: the user's profile
+    schema:
+      $ref: '#/definitions/User'
+

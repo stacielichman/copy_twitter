@@ -1,0 +1,7 @@
+/.idea/
+.coverage
+/db
+/dev
+/logs
+.pytest_cache
+/app/.mypy_cache

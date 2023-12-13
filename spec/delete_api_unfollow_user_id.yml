@@ -1,0 +1,27 @@
+Deletes a followed user by its id
+---
+tags:
+  - user
+parameters:
+  - in: header
+    name: Api-Key
+    schema:
+      type: string
+      example: test
+  - in: path
+    name: id
+    description: a following user id
+    required: true
+    schema:
+      type: integer
+      example: 1
+
+responses:
+  200:
+    description: Successful operation
+    schema:
+      type: object
+      properties:
+        result:
+          type: string
+          example: "true"

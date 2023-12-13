@@ -1,0 +1,9 @@
+wheel==0.42.0
+Flask==2.2.5
+SQLAlchemy==2.0.23
+SQLAlchemy-serializer==1.4.1
+typing_extensions==4.7.1
+uWSGI==2.0.23
+Werkzeug==2.2.3
+flasgger==0.9.7.1
+flask_sqlalchemy==3.0.3

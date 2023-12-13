@@ -1,0 +1,27 @@
+Post a like by tweet id
+---
+tags:
+  - like
+parameters:
+  - in: header
+    name: Api-Key
+    schema:
+      type: string
+      example: test
+  - in: path
+    name: id
+    description: a tweet id
+    required: true
+    schema:
+      type: integer
+      example: 1
+
+responses:
+  201:
+    description: Successful operation
+    schema:
+      type: object
+      properties:
+        result:
+          type: string
+          example: "true"

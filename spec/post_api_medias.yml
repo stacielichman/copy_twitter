@@ -1,0 +1,25 @@
+Posts a file
+---
+tags:
+  - media
+consumes:
+  - multipart/form-data
+parameters:
+  - name: file
+    in: formData
+    description: the file to upload
+    required: true
+    type: file
+
+responses:
+  201:
+    description: a media id
+    schema:
+      type: object
+      properties:
+        result:
+          type: string
+          example: "true"
+        media_id:
+          type: integer
+          example: 1
